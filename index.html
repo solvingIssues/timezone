@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timezone</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Orbitron:300,400,600,700&amp;lang=en" />
+    <link rel="stylesheet" href="src/css/main.css">
+    <script src="src/js/consts.js"></script>
+</head>
+<body>
+    <div id="timezone">
+        <select name="availableTimezone" id="availableTimezone">
+            <option value="0">Select Country</option>
+        </select>
+        <div id="clock">
+            <div id="time">
+                <span id="hour">19</span>
+                <span>:</span>
+                <span id="minutes">50</span>
+            </div>
+            <div id="date">
+                <span id="year">2023</span>
+                <span>-</span>
+                <span id="month">05</span>
+                <span>-</span>
+                <span id="day">22</span>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="src/js/getCountryFromNavigator.js"></script>
+    <script src="src/js/main.js"></script>
+</body>
+</html>
