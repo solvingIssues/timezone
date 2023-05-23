@@ -9,17 +9,6 @@
  * @version 1.0
  * }
  */
-/**
- * @description Gets country name by user navigator language
- * @param String || undefined countryTag if set then returns country name by this param
- * @returns Object response{
- * data: String
- * error: bool,
- * message: String
- * @author https://github.com/solvingIssues
- * @version 1.0
- * }
- */
 function getCountryByNavigatorLanguage(countryTag) {
   let response = {
       data : "",

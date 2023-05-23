@@ -250,7 +250,7 @@ const COUNTRY_TAG = {
     "ZW": "Zimbabwe"
   }
   
-  const COUNTRY_TIMEZONE = {
+const COUNTRY_TIMEZONE = {
 "Afghanistan": "Asia/Kabul" ,
 "Albania": "Europe/Tirane" ,
 "Algeria": "Africa/Algiers" ,

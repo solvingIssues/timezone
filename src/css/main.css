@@ -1,4 +1,4 @@
-#availableTimezone{
+.availableTimezone{
     width: 268px;
     margin-bottom: 5px;
     text-align: center;
@@ -7,21 +7,22 @@
     border-radius: 20px;
     padding: 5px;
 }
-#availableTimezone option{
+.availableTimezone option{
     border-radius: 20px;
 }
-#clock {
+.clock {
     padding: 10px;
     font-family: "Orbitron";
     font-size: 32px;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     display: flex;
     width: 250px;
     border-radius: 100px;
     background-color: black;
+    justify-content: center;
 }
-#time {
+.time {
     flex: 1;
     display:flex;
     flex-direction: row;
@@ -29,7 +30,13 @@
     margin: auto;
     font-size: 42px;
 }
-#date {
+.timezone {
+    display: flex;
+    flex:2;
+    flex-direction: column;
+    width: 268px;
+}
+.date {
     color: white;
     font-size: 12px;
     display: flex;
@@ -39,4 +46,17 @@
     text-align: center;
     margin: auto;
     font-weight: bold;
+}
+.options {
+    color: white;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    padding: 13px 10px 10px 10px;
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+.new-clock {
+    margin-bottom: 5px;
 }

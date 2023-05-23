@@ -5,28 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timezone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Orbitron:300,400,600,700&amp;lang=en" />
     <link rel="stylesheet" href="src/css/main.css">
     <script src="src/js/consts.js"></script>
 </head>
 <body>
-    <div id="timezone" class="ui-widget-content">
-        <select name="availableTimezone" id="availableTimezone">
+    <div id="timezone" class="timezone ui-widget-content">
+        <select class="availableTimezone">
             <option value="0">Select Country</option>
         </select>
-        <div id="clock">
-            <div id="time">
-                <span id="hour">19</span>
-                <span>:</span>
-                <span id="minutes">50</span>
+        <div class="clock">
+            <div class="date-time">
+                <div class="time">
+                    <span class="hour">19</span>
+                    <span>:</span>
+                    <span class="minutes">50</span>
+                </div>
+                <div class="date">
+                    <span class="year">2023</span>
+                    <span>-</span>
+                    <span class="month">05</span>
+                    <span>-</span>
+                    <span class="day">22</span>
+                </div>
             </div>
-            <div id="date">
-                <span id="year">2023</span>
-                <span>-</span>
-                <span id="month">05</span>
-                <span>-</span>
-                <span id="day">22</span>
+            <div class="options">
+                <i class="fa-solid fa-plus new-clock"></i>
+                <i class="fa-solid fa-gear fa-spin settings"></i>
+                <i class="fa-solid fa-heart-circle-plus fa-beat"></i>
+                <i class="fa-regular fa-clock fa-shake"></i>
             </div>
+            
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
