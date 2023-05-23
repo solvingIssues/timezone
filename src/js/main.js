@@ -1,9 +1,28 @@
 let country = getCountryByNavigatorLanguage().data;
-let request = {
-    baseUrl: "https://timeapi.io/api/",
-    availableTimeZones: "AvailableTimeZones",
-    timeZone: "Time/current/zone?timeZone=" + country
-};
+
+function getCountryTime(countryTag) {
+    let options = {
+        timeZone: COUNTRY_TIMEZONE[COUNTRY_TAG[countryTag]],
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+      };
+      formatter = new Intl.DateTimeFormat([], options);
+
+    let res = formatter.format(new Date());
+    let len = res.length;
+    let finalData = {
+        day : res.slice(0, res.indexOf("/")),
+        month : res.slice(res.indexOf("/") + 1, res.lastIndexOf("/")),
+        year : res.slice(res.indexOf(",") - 4, res.indexOf(",")),
+        hours : res.slice(res.indexOf(":") - 2, res.indexOf(":")),
+        minutes : res.slice(res.lastIndexOf(":") - 2, res.lastIndexOf(":"))
+    }
+    return finalData;
+}
 
 function fillSelectCountry() {
     let countries = Object.values(COUNTRY_TAG);
@@ -15,27 +34,28 @@ function fillSelectCountry() {
     }
 }
 
-function setClock() {
-    $.ajax({
-        url: request.baseUrl + request.timeZone,
-        method: "GET",
-        type: "GET",
-        success: function(response) {
-            $("#hour").html(response.hour);
-            $("#minutes").html(response.minute);
-            $("#year").html(response.year);
-            $("#month").html(response.month);
-            $("#day").html(response.day);
-        },
-    });
+function setClock(tag) {
+    let currentTimeZone =
+  navigator.languages && navigator.languages.length
+      ? navigator.languages[0]
+      : navigator.language;
+    let countryTag = typeof(tag) == "undefined" ? currentTimeZone.slice(currentTimeZone.length - 2, currentTimeZone.length).toUpperCase() : tag;
+    let time = getCountryTime(countryTag);
+    $("#hour").html(time.hours);
+    $("#minutes").html(time.minutes);
+    $("#year").html(time.year);
+    $("#month").html(time.month);
+    $("#day").html(time.data);
 }
+  
 
 $("document").ready(function(handler) {
     fillSelectCountry();
     $("#availableTimezone").on('change', function(event) {
-        country = $("#availableTimezone").val();
-        setClock();
+        let aux = $("#availableTimezone").val();
+        country = getCountryByNavigatorLanguage(aux).data;
+        setClock(aux);
     });
     setClock();
     
-});        
+});    
