@@ -47,7 +47,6 @@ function setClock(tag) {
     $("#month").html(time.month);
     $("#day").html(time.data);
 }
-  
 
 $("document").ready(function(handler) {
     fillSelectCountry();
@@ -57,5 +56,9 @@ $("document").ready(function(handler) {
         setClock(aux);
     });
     setClock();
+
+    $( function() {
+        $( "#timezone" ).draggable();
+    } );
     
 });    
