@@ -14,38 +14,38 @@ let clock = {
   country : getCountryByNavigatorLanguage().data,
   
 
-getCountryTime: function (countryTag) {
-    let options = {
-        timeZone: COUNTRY_TIMEZONE[COUNTRY_TAG[countryTag]],
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-      };
-      formatter = new Intl.DateTimeFormat([], options);
+    getCountryTime: function (countryTag) {
+        let options = {
+            timeZone: COUNTRY_TIMEZONE[COUNTRY_TAG[countryTag]],
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+        };
+        formatter = new Intl.DateTimeFormat([], options);
 
-    let res = formatter.format(new Date());
-    let finalData = {
-        day : res.slice(0, res.indexOf("/")),
-        month : res.slice(res.indexOf("/") + 1, res.lastIndexOf("/")),
-        year : res.slice(res.indexOf(",") - 4, res.indexOf(",")),
-        hours : res.slice(res.indexOf(":") - 2, res.indexOf(":")),
-        minutes : res.slice(res.lastIndexOf(":") - 2, res.lastIndexOf(":"))
-    }
-    return finalData;
-},
+        let res = formatter.format(new Date());
+        let finalData = {
+            day : res.slice(0, res.indexOf("/")),
+            month : res.slice(res.indexOf("/") + 1, res.lastIndexOf("/")),
+            year : res.slice(res.indexOf(",") - 4, res.indexOf(",")),
+            hours : res.slice(res.indexOf(":") - 2, res.indexOf(":")),
+            minutes : res.slice(res.lastIndexOf(":") - 2, res.lastIndexOf(":"))
+        }
+        return finalData;
+    },
 
-fillSelectCountry: function() {
-    let countries = Object.values(COUNTRY_TAG);
-    let countriesTag = Object.keys(COUNTRY_TAG);
-    let nCountries = countries.length;
+    fillSelectCountry: function() {
+        let countries = Object.values(COUNTRY_TAG);
+        let countriesTag = Object.keys(COUNTRY_TAG);
+        let nCountries = countries.length;
 
-    for(let i = 0; i < nCountries; i++) {
-        $(".availableTimezone").append('<option value="' + countriesTag[i] +'">' + countries[i] + '</option>');
-    }
-},
+        for(let i = 0; i < nCountries; i++) {
+            $(".availableTimezone").append('<option value="' + countriesTag[i] +'">' + countries[i] + '</option>');
+        }
+    },
 
     setClock: function (el, tag) {
         let currentTimeZone =
@@ -83,6 +83,11 @@ fillSelectCountry: function() {
             clock.setEvents(elementId);
         });
 
+        $("#" + id).find(".delete-clock").on('click', function(e) {
+            e.preventDefault();
+            $(".delete-clock").length > 1 ? $(this).closest(".timezone").remove() : null;
+        });
+
         $("#" + id).find(".availableTimezone").on('change', function(e) {
             let aux = $(this).val();
             country = getCountryByNavigatorLanguage(aux).data;
@@ -90,7 +95,6 @@ fillSelectCountry: function() {
         }); 
     }
 }
-
 
 $("document").ready(function(handler) {
     clock.fillSelectCountry();
@@ -109,5 +113,10 @@ $("document").ready(function(handler) {
         $("body").children(".timezone").last().attr("id", elementId);
         $("#" + elementId).draggable();
         clock.setEvents(elementId);
+    });
+
+    $("#timezone").find(".delete-clock").on('click', function(event) {
+        event.preventDefault();
+        $(".delete-clock").length > 1 ? $(this).closest(".timezone").remove() : null;
     });
 });

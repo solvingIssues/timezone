@@ -60,3 +60,11 @@
 .new-clock {
     margin-bottom: 5px;
 }
+
+#timezone .delete-clock {
+    display: none;
+}
+
+.delete-clock {
+    display: block;
+}
